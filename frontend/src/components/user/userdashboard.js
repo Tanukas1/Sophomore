@@ -115,7 +115,7 @@ export default function UserDashboard() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Sophomore
+            User Dashboard
           </Typography>
         </Toolbar>
       </AppBar>

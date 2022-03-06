@@ -12,22 +12,73 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import Swal from 'sweetalert2';
+import app_config from '../../config';
+import {Formik} from 'formik';
 const theme = createTheme();
+const Signup = () => {
 
-export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+  const url = app_config.api_url;
+
+  const signupform = {
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: ''
+  }
+
+  const formSubmit = (values) => {
+      console.log(values);
+
+
+      const reqOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(values)
+      }
+
+      // request on server and parse the json response
+      fetch(url + 'user/add', reqOptions)
+          .then(res => res.json())
+          .then(data => {
+              console.log(data);
+              if (data.message == 'success') {
+                  Swal.fire({
+                      icon: 'success',
+                      title: 'Registered!',
+                      text: 'Now Login to Continue'
+                  })
+              } else {
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'Oops!',
+                      text: 'Something went wrong'
+                  })
+              }
+
+          })
+  }
+
+// export default function SignUp() {
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     const data = new FormData(event.currentTarget);
+//     // eslint-disable-next-line no-console
+//     console.log({
+//       email: data.get('email'),
+//       password: data.get('password'),
+//     });
+//   };
 
   return (
     <ThemeProvider theme={theme}>
+      <Formik initialValues={signupform}
+              onSubmit={formSubmit}>
+              {({
+                  values,
+                  handleChange,
+                  handleSubmit
+                }) => (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -47,9 +98,9 @@ export default function SignUp() {
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
-                <TextField
+                <TextField onChange={handleChange} value={values.firstname} name="firstname"
                   autoComplete="given-name"
-                  name="firstName"
+                  // name="firstName"
                   required
                   fullWidth
                   id="firstName"
@@ -58,30 +109,30 @@ export default function SignUp() {
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
+                <TextField onChange={handleChange} value={values.lastname} name="lastname"
                   required
                   fullWidth
                   id="lastName"
                   label="Last Name"
-                  name="lastName"
+                  // name="lastName"
                   autoComplete="family-name"
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <TextField  onChange={handleChange} value={values.email} name="email"
                   required
                   fullWidth
                   id="email"
                   label="Email Address"
-                  name="email"
+                  // name="email"
                   autoComplete="email"
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <TextField onChange={handleChange} value={values.password} name="password"
                   required
                   fullWidth
-                  name="password"
+                  // name="password"
                   label="Password"
                   type="password"
                   id="password"
@@ -117,6 +168,9 @@ export default function SignUp() {
         </Box>
         
       </Container>
+      )}                          
+      </Formik>
     </ThemeProvider>
   );
 }
+export default Signup;
