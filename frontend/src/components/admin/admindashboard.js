@@ -151,7 +151,7 @@ export default function AdminDashboard() {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Typography paragraph>
-          Consequat maufgkfhjghkgfjhjgjghkg
+          admin deshboard
         </Typography>
       </Box>
     </Box>
