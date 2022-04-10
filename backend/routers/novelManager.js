@@ -44,7 +44,7 @@ router.get("/getbyid/:id", (req, res) => {
 router.delete("/delete/:id", (req, res) => {
   Model.findByIdAndDelete(req.params.id)
     .then((data) => {
-      console.log("blog deleted by id");
+      console.log("novel deleted by id");
       res.status(200).json(data);
     })
     .catch((err) => {
@@ -56,7 +56,7 @@ router.delete("/delete/:id", (req, res) => {
 router.put("/update/:id", (req, res) => {
   Model.findByIdAndUpdate(req.params.id, req.body)
     .then((data) => {
-      console.log("portfolio deleted by id");
+      console.log(" novel deleted by id");
       res.status(200).json(data);
     })
     .catch((err) => {

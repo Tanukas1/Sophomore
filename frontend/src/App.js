@@ -8,10 +8,11 @@
  import Home from "./components/main/home";
  import User from "./components/user"; 
  import UserDashboard from "./components/user/userdashboard";
- import AddNovel from './components/user/AddNovel';
- import BrowserNovel from "./components/main/BrowseNovels";
- import AddQuery from "./components/main/AddQuery";
- import ListQuery from "./components/main/ListQuery";
+ import AddNovel from './components/user/addNovel';
+ import BrowserNovel from "./components/main/browseNovel";
+ import AddQuery from "./components/main/addQuery";
+ import ListQuery from "./components/main/listQuery";
+import ViewNovel from "./components/main/viewNovel";
 
  function App() {
      return (
@@ -26,16 +27,17 @@
            <Route element ={<Main/>} path="main">
            <Route element ={<Signup/>} path="signup"/>
            <Route element ={<Login/>} path="login"/>
-           <Route element ={<BrowserNovel/>} path="BrowserNovel"/>
+           <Route element ={<BrowserNovel/>} path="browserNovel"/>
            <Route element={<Home/>} path="home"/>
-           <Route element={<AddQuery/>} path="AddQuery"/>
-           <Route element={<ListQuery/>} path="ListQuery"/>
+           <Route element={<AddQuery/>} path="addQuery"/>
+           <Route element={<ListQuery/>} path="listQuery"/>
+           <Route element={<ViewNovel/>} path="viewNovel"/>
           </Route>
 
 
            <Route element={<User/>} path="user">
              <Route element={<UserDashboard/>} path="dashboard">
-             <Route element={<AddNovel/>} path="AddNovel" />
+             <Route element={<AddNovel/>} path="addNovel" />
             
              </Route>
             

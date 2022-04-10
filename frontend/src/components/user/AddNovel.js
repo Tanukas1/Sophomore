@@ -16,6 +16,7 @@ export default function AddNovel() {
         flexDirection: 'column',
         '& .MuiTextField-root': { width: '50ch' },
       }}>
+        
 
       <h1>ADD NOVEL</h1>
       <TextField id="filled-basic" label="Name*" variant="filled" /><br/>
