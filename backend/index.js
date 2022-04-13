@@ -16,17 +16,6 @@ app.get("/home", (req, res) => {
   res.send("Request on home");
 });
 
-// app.post("/googleauth", async (req, res) => {
-//   const { token } = req.body;
-//   const ticket = await client.verifyIdToken({
-//     idToken: token,
-//     audience:
-//       "552817724530-itaeb1gsnpj82isbhqll5m73t6old9fd.apps.googleusercontent.com",
-//   });
-//   const { name, email, picture } = ticket.getPayload();
-  
-//   res.status(201).json({ name, email, picture });
-// });
 
 app.listen(port, () => {
   console.log(`Server started on port localhost : ${port}`)

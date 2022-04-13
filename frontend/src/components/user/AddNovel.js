@@ -5,6 +5,60 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
+import {useState} from "react"; 
+import Swal from "sweetalert2";
+
+// const url = app_config.api_url;
+
+const [thumbnail,setThumbnail] = useState("");
+const [novel, setNovel] = useState("");
+
+const novelSubmit = (values) => {
+  values.thumbnail = thumbnail;
+  values.file = novel;
+  console.log(values);
+
+  const reqOpt = {
+    method: "POST",
+    body: JSON.stringify(values),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  fetch(+ "/novel/add", reqOpt)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      Swal.fire({
+        icon: "success",
+        title: "Success!",
+        text: "Novel Added Successfully!",
+      });
+    });
+};
+
+const uploadThumbnail = (e) => {
+  let formdata = new FormData();
+  let file = e.target.files[0];
+  setThumbnail(file.name);
+  formdata.append("file", file);
+
+  fetch( + "/util/uploadfile", { method: "POST", body: formdata })
+    .then((res) => res.json())
+    .then((data) => console.log(data));
+};
+
+const uploadNovel = (e) => {
+  let formdata = new FormData();
+  let file = e.target.files[0];
+  setNovel(file.name);
+  formdata.append("file", file);
+
+  fetch(+ "/util/uploadfile", { method: "POST", body: formdata })
+    .then((res) => res.json())
+    .then((data) => console.log(data));
+};
 
 
 export default function AddNovel() {

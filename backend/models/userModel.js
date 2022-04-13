@@ -2,10 +2,10 @@ const mongoose = require("../connection");
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-  username: String,
-  email: String,
-  password: String,
-  dob: Date,
+    firstname: String,
+    lastname: String,
+    email: String,
+    password: String,
 });
 
 const model = mongoose.model("users", schema);
