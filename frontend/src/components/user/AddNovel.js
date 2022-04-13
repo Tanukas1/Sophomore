@@ -7,8 +7,12 @@ import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import {useState} from "react"; 
 import Swal from "sweetalert2";
+import app_config from '../../config';
 
-// const url = app_config.api_url;
+
+export default function AddNovel() {
+
+const url = app_config.api_url;
 
 const [thumbnail,setThumbnail] = useState("");
 const [novel, setNovel] = useState("");
@@ -61,7 +65,7 @@ const uploadNovel = (e) => {
 };
 
 
-export default function AddNovel() {
+
   return (
     <Card sx={{ maxWidth: 700 }}>
     <Box

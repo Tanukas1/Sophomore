@@ -1,55 +1,62 @@
- import { BrowserRouter,Routes ,Route} from 'react-router-dom';
- import './App.css';
- import Admin from "./components/admin"; 
- import AdminDashboard from "./components/admin/admindashboard"; 
- import Main from "./components/main"; 
- import Signup from './components/main/signup';
- import Login from './components/main/login';
- import Home from "./components/main/home";
- import User from "./components/user"; 
- import UserDashboard from "./components/user/userdashboard";
- import AddNovel from './components/user/addNovel';
- import BrowserNovel from "./components/main/browseNovel";
- import AddQuery from "./components/main/addQuery";
- import ListQuery from "./components/main/listQuery";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import './App.css';
+import Admin from "./components/admin";
+import AdminDashboard from "./components/admin/admindashboard";
+import Main from "./components/main";
+import Signup from './components/main/signup';
+import Login from './components/main/login';
+import Home from "./components/main/home";
+import User from "./components/user";
+import UserDashboard from "./components/user/userdashboard";
+import AddNovel from './components/user/addNovel';
+import BrowserNovel from "./components/main/browseNovel";
+import AddQuery from "./components/main/addQuery";
+import ListQuery from "./components/main/listQuery";
 import ViewNovel from "./components/main/viewNovel";
+import Notfound from './components/notfound';
 
- function App() {
-     return (
-       <div >
-        
-      
-         <BrowserRouter>
-         <Routes>
-         <Route element={<Admin/>} path="admin">
-           <Route element={<AdminDashboard/>} path="admindashboard"/>
-           </Route>
-           <Route element ={<Main/>} path="main">
-           <Route element ={<Signup/>} path="signup"/>
-           <Route element ={<Login/>} path="login"/>
-           <Route element ={<BrowserNovel/>} path="browserNovel"/>
-           <Route element={<Home/>} path="home"/>
-           <Route element={<AddQuery/>} path="addQuery"/>
-           <Route element={<ListQuery/>} path="listQuery"/>
-           <Route element={<ViewNovel/>} path="viewNovel"/>
+function App() {
+  return (
+    <div >
+
+
+      <BrowserRouter>
+        <Routes>
+
+          
+          <Route element={<Notfound />} path="notfound"/>
+          <Route element={<Admin />} path="admin">
+            <Route element={<AdminDashboard />} path="admindashboard" />
+          </Route>
+          <Route element={<Main />} path="main">
+            <Route element={<Signup />} path="signup" />
+            <Route element={<Login />} path="login" />
+            <Route element={<BrowserNovel />} path="browserNovel" />
+            <Route element={<Home />} path="home" />
+            <Route element={<AddQuery />} path="addQuery" />
+            <Route element={<ListQuery />} path="listQuery" />
+            <Route element={<ViewNovel />} path="viewNovel" />
           </Route>
 
 
-           <Route element={<User/>} path="user">
-             <Route element={<UserDashboard/>} path="dashboard">
-             <Route element={<AddNovel/>} path="addNovel" />
-            
-             </Route>
-            
-         </Route>
-         </Routes>
+          <Route element={<User />} path="user">
+            <Route element={<UserDashboard />} path="dashboard" />
+            <Route element={<AddNovel />} path="addNovel" />
+
+          </Route>
+
+            <Route element={<Navigate to="/main/home" />} path="/" />
+            <Route element={<Navigate to="/notfound" />} path="*" />
+
+
+        </Routes>
       </BrowserRouter>
-  
+
     </div>
-     );
-   }
-  
-   export default App;
+  );
+}
+
+export default App;
 
 
 
