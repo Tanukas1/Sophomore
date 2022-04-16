@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Admin from "./components/admin";
 import AdminDashboard from "./components/admin/admindashboard";
+// import Footer from "./components/admin/footer"
 import Main from "./components/main";
 import Signup from './components/main/signup';
 import Login from './components/main/login';
@@ -14,6 +15,7 @@ import AddQuery from "./components/main/addQuery";
 import ListQuery from "./components/main/listQuery";
 import ViewNovel from "./components/main/viewNovel";
 import Notfound from './components/notfound';
+import ManageUser from './components/admin/manageUser';
 
 function App() {
   return (
@@ -26,8 +28,11 @@ function App() {
           
           <Route element={<Notfound />} path="notfound"/>
           <Route element={<Admin />} path="admin">
+            {/* <Route element={<Footer />} path="footer" /> */}
             <Route element={<AdminDashboard />} path="admindashboard" />
+            <Route element={<ManageUser />} path="manageuser" />
           </Route>
+          
           <Route element={<Main />} path="main">
             <Route element={<Signup />} path="signup" />
             <Route element={<Login />} path="login" />
@@ -36,8 +41,9 @@ function App() {
             <Route element={<AddQuery />} path="addQuery" />
             <Route element={<ListQuery />} path="listQuery" />
             <Route element={<ViewNovel />} path="viewNovel" />
+           
           </Route>
-
+           
 
           <Route element={<User />} path="user">
             <Route element={<UserDashboard />} path="dashboard" />

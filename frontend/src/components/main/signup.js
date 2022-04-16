@@ -58,18 +58,6 @@ const Signup = () => {
 
           })
   }
-
-// export default function SignUp() {
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     const data = new FormData(event.currentTarget);
-//     // eslint-disable-next-line no-console
-//     console.log({
-//       email: data.get('email'),
-//       password: data.get('password'),
-//     });
-//   };
-
   return (
     <ThemeProvider theme={theme}>
       <Formik initialValues={signupform}

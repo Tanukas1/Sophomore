@@ -8,6 +8,10 @@ import Card from '@mui/material/Card';
 import {useState} from "react"; 
 import Swal from "sweetalert2";
 import app_config from '../../config';
+import { Formik } from "formik";
+import formSubmit from "react";
+import novelform from "react";
+
 
 
 export default function AddNovel() {
@@ -74,18 +78,25 @@ const uploadNovel = (e) => {
         flexDirection: 'column',
         '& .MuiTextField-root': { width: '50ch' },
       }}>
-        
 
       <h1>ADD NOVEL</h1>
-      <TextField id="filled-basic" label="Name*" variant="filled" /><br/>
-      <TextField id="filled-basic" label="Auothor Name*" variant="filled" /><br/>
-      <TextField id="filled-basic" label="Title*" variant="filled" /><br/>
-      <TextField id="filled-basic" label="Publication*" variant="filled" /><br/>
-      <TextareaAutosize aria-label="minimum height" minRows={3} placeholder="Discription" style={{ width: 200 }}/><br/>
+      <Formik initialValues={novelform} onSubmit={formSubmit}>
+      {({ values, handleChange, handleSubmit }) => (
+      <form onSubmit={handleSubmit}>
+        
+        
+      <TextField id="filled-basic" label="Name*" variant="filled" /><br/><br/>
+      <TextField id="filled-basic" label="Auothor Name*" variant="filled" /><br/><br/>
+      <TextField id="filled-basic" label="Title*" variant="filled" /><br/><br/>
+      <TextField id="filled-basic" label="Publication*" variant="filled" /><br/><br/>
+      <TextareaAutosize aria-label="minimum height" minRows={3} placeholder="Discription" style={{ width: 200 }}/><br/><br/>
       <Stack direction="row" spacing={5}>
       <Button variant="contained" component="label"> Upload File <input type="file" hidden/></Button>
       <Button variant="contained" color="success">Submit</Button>
       </Stack>
+      </form>
+      )}
+      </Formik>
     </Box>
     </Card>
   );
