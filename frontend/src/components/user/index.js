@@ -13,9 +13,9 @@ const User = () => {
       link : '/user/addnovel'
     },
     {
-      name : 'Add Novels',
+      name : 'Add Query',
       icon : <Book />,
-      link : '/user/addnovel'
+      link : '/user/addQuery'
     },
   ]
   return (

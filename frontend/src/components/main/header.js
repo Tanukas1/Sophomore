@@ -11,8 +11,9 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import {useNavigate } from 'react-router-dom';
 
-const pages = ['Home','addQuery','BrowseNovel','ViewNovel','Signup','Login'];
+const pages = [{name : 'Home', link: '/main/home'},{name : 'addQuery', link: '/main/home'},{name : 'BrowseNovel', link: '/main/home'},{name : 'ViewNovel', link: '/main/home'},{name : 'Signup', link: '/main/home'},{name : 'Login', link: '/main/home'}];
 const settings = ['Profile', 'Dashboard', 'Logout'];
 
 const ResponsiveAppBar = () => {
@@ -33,6 +34,8 @@ const ResponsiveAppBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const navigate = useNavigate();
 
   return (
     <AppBar position="static">
@@ -76,9 +79,9 @@ const ResponsiveAppBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {pages.map(({name, link}) => (
+                <MenuItem key={name} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center" onClick={() => navigate(link)}>{name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -92,13 +95,13 @@ const ResponsiveAppBar = () => {
             BOOK WORMS
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {pages.map(({name, link}) => (
               <Button
-                key={page}
+                key={name}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {name}
               </Button>
             ))}
           </Box>

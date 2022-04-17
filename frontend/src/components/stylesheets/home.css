@@ -1,53 +1,58 @@
-.home-content{
-    display: flex;
-    justify-content: space-around;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+:root{
+    --green:#27ae60;
+    --dark-color:#219150;
+    --black:#444;
+    --light-color:#666;
+    --border:.1rem solid rgba(0,0,0,.1);
+    --border-hover:.1rem solid var(--black);
+    --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+}
+.home{
+    background: url('.././images/banner-bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.home .row{
+    display:flex;
     align-items: center;
-    position: absolute;
-    left: 50%;
-    top:50%;
-    transform: translate(-50%,-50%);
-    width:90%;
- 
+    flex-wrap: wrap;
+    gap:1.5rem;
 }
-.home-img{
-    width:500px;
-    height:400px;
-    margin:20px;
+
+.home .row .content{
+    flex:1 1 42rem;
 }
-.home-img img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
+
+.home .row .books-slider{
+    flex:1 1 42rem;
+    text-align: center;
+    margin-top: 2rem;
 }
-.home-text{
-    width:500px;
-    margin:20px;
+
+.home .row .books-slider a img{
+    height: 25rem;
 }
-.home-text h1{
-    font-size: 3.5rem;
-    line-height: 55px;
-    color:#22252e;
-    letter-spacing: 1px;
-    font-weight: 700;
-    margin: 0px;
+
+.home .row .books-slider a:hover img{
+    transform: scale(.9);
 }
-.home-text p{
-    font-size: 1rem;
-    color:#777474;
+
+.home .row .books-slider .stand{
+    width:100%;
+    margin-top: -2rem;
 }
-.main-login{
-    width:120px;
-    height:40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #5a76fd;
-    color:#fff;
-    box-shadow: 5px 10px 30px rgba(90,118,253,0.5);
-    text-transform: uppercase;
+
+.home .row .content h3{
+    color:var(--black);
+    font-size: 4.5rem;
 }
-.main-login:hover{
-    background-color: #5a62fd;
-    transition: all ease 0.3s;
+
+.home .row .content p{
+    color:var(--light-color);
+    font-size: 1.4rem;
+    line-height: 2;
+    padding:1rem 0;
 }

@@ -38,7 +38,7 @@ const Signup = () => {
       }
 
       // request on server and parse the json response
-      fetch(url + '', reqOptions)
+      fetch(url + '/user/add', reqOptions)
           .then(res => res.json())
           .then(data => {
               console.log(data);
