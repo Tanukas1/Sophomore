@@ -98,7 +98,7 @@ const ResponsiveAppBar = () => {
             {pages.map(({name, link}) => (
               <Button
                 key={name}
-                onClick={handleCloseNavMenu}
+                onClick={e => navigate(link)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {name}

@@ -17,6 +17,11 @@ const User = () => {
       icon : <Book />,
       link : '/user/addQuery'
     },
+    {
+      name : 'Exchange Novel',
+      icon : <Book />,
+      link : '/user/exchangenovel'
+    },
   ]
   return (
     <>

@@ -1,58 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
-
-:root{
-    --green:#27ae60;
-    --dark-color:#219150;
-    --black:#444;
-    --light-color:#666;
-    --border:.1rem solid rgba(0,0,0,.1);
-    --border-hover:.1rem solid var(--black);
-    --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+section {
+    padding-top: 4rem;
+    padding-bottom: 5rem;
+    background-color: #f1f4fa;
 }
-.home{
-    background: url('.././images/banner-bg.jpg');
-    background-size: cover;
-    background-position: center;
+.wrap {
+    display: flex;
+    background: white;
+    padding: 1rem 1rem 1rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 7px 7px 30px -5px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
 }
 
-.home .row{
-    display:flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap:1.5rem;
+.wrap:hover {
+    background: linear-gradient(135deg,#429884 0%,#14e792 100%);
+    color: white;
 }
 
-.home .row .content{
-    flex:1 1 42rem;
+.ico-wrap {
+    margin: auto;
 }
 
-.home .row .books-slider{
-    flex:1 1 42rem;
-    text-align: center;
-    margin-top: 2rem;
+.mbr-iconfont {
+    font-size: 4.5rem !important;
+    color: #313131;
+    margin: 1rem;
+    padding-right: 1rem;
+}
+.vcenter {
+    margin: auto;
 }
 
-.home .row .books-slider a img{
-    height: 25rem;
+.mbr-section-title3 {
+    text-align: left;
 }
-
-.home .row .books-slider a:hover img{
-    transform: scale(.9);
+h2 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
-
-.home .row .books-slider .stand{
-    width:100%;
-    margin-top: -2rem;
-}
-
-.home .row .content h3{
-    color:var(--black);
-    font-size: 4.5rem;
-}
-
-.home .row .content p{
-    color:var(--light-color);
+.display-5 {
+    font-family: 'Source Sans Pro',sans-serif;
     font-size: 1.4rem;
-    line-height: 2;
-    padding:1rem 0;
 }
+.mbr-bold {
+    font-weight: 700;
+}
+
+ p {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    line-height: 25px;
+}
+.display-6 {
+    font-family: 'Source Sans Pro',sans-serif;
+    font-size: 1re}
+
+
+    
+.share:hover {
+            text-decoration: none;
+        opacity: 0.8;
+    }

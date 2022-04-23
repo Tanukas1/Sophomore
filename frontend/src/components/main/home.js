@@ -1,41 +1,107 @@
 import React from 'react';
+import image from '../images/home.jpg';
 import "../stylesheets/home.css"
 
 export default function home() {
   return (
-//     <div class="home-content">
-//     <div class="home-text">
-//         <h1>Website Design</h1>
-//         <p>Website design collection. You will get all type of website design here. Just select, add to cart, and enjoy you website. I hope you like this website tutorial Pure HTML and CSS.</p>
-//     <a href="#" class="main-login">Log in</a>
-//     </div>
-//     <div class="home-img">
-//         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/b6567561744825.5a78b485e9893.jpg"/>
-//     </div>
-// </div>
-<section class="home" id="home">
-
-<div class="row">
-
-    <div class="content">
-        <h3>upto 75% off</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam deserunt nostrum accusamus. Nam alias sit necessitatibus, aliquid ex minima at!</p>
-        <a href="#" class="btn">shop now</a>
-    </div>
-
-    <div class="swiper books-slider">
-        <div class="swiper-wrapper">
-            <a href="#" class="swiper-slide"><img src="images/book-1.png" alt=""/></a>
-            <a href="#" class="swiper-slide"><img src="images/book-1.png" alt=""/></a>
-            <a href="#" class="swiper-slide"><img src="images/book-1.png" alt=""/></a>
-            <a href="#" class="swiper-slide"><img src="images/book-1.png" alt=""/></a>
-            <a href="#" class="swiper-slide"><img src="images/book-1.png" alt=""/></a>
-            <a href="#" class="swiper-slide"><img src="images/book-1.png" alt=""/></a>
+  <div>
+        <div class="card bg-dark text-white" style={{maxwidth: '30rem'}}/>
+        <div class="card-img-top"><img src={image} className="img-fluid" /></div>
+        <div class="card-img-overlay d-flex align-items-end"></div>
+          
+        <section>
+<div class="container">
+<h1>Our Services</h1>
+	
+		<div class="row mbr-justify-content-center">
+            <div class="col-lg-6 mbr-col-md-10">
+                <div class="wrap">
+                    <div class="ico-wrap">
+                        <span class="mbr-iconfont fa-volume-up fa"></span>
+                    </div>
+                    <div class="text-wrap vcenter">
+                        <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Stay <span>Successful</span></h2>
+                        <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mbr-col-md-10">
+                <div class="wrap">
+                    <div class="ico-wrap">
+                        <span class="mbr-iconfont fa-calendar fa"></span>
+                    </div>
+                    <div class="text-wrap vcenter">
+                        <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Create
+                            <span>An Effective Team</span>
+                        </h2>
+                        <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mbr-col-md-10">
+                <div class="wrap">
+                    <div class="ico-wrap">
+                        <span class="mbr-iconfont fa-globe fa"></span>
+                    </div>
+                    <div class="text-wrap vcenter">
+                        <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Launch
+                            <span>A Unique Project</span>
+                        </h2>
+                        <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mbr-col-md-10">
+                <div class="wrap">
+                    <div class="ico-wrap">
+                        <span class="mbr-iconfont fa-trophy fa"></span>
+                    </div>
+                    <div class="text-wrap vcenter">
+                        <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Achieve <span>Your Targets</span></h2>
+                        <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <img src=".././images/stand.png" class="stand" alt=""/>
-    </div>
+
 </div>
 
 </section>
+<h3 class="mt-3 pb-3 mb-4 font-italic border-bottom">
+      Featured Book
+   </h3>
+   <div class="row">
+   <div class="col-md-3">
+         <div class="card bg-light">
+            <img class="card-img-top" src="//placeimg.com/280/180/tech" alt="Card image cap"/>
+            <div class="card-body">
+               <h5 class="card-title border-bottom pb-3">Card title <a href="#" class="float-right btn btn-sm btn-success d-inline-flex share"><i class="fas fa-share-alt"></i></a></h5>
+               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+               <a href="#" class="btn btn-sm btn-success float-right">Add to Card<i class="fas fa-angle-double-right"></i></a>
+            </div>
+         </div>
+      </div>  
+      <div class="col-md-3">
+         <div class="card">
+            <img class="card-img-top" src="//placeimg.com/280/180/tech" alt="Card image cap"/>
+            <div class="card-body">
+               <h5 class="card-title border-bottom pb-3">Card title <a href="#" class="float-right btn btn-sm btn-success d-inline-flex share"><i class="fas fa-share-alt"></i></a></h5>
+               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+               <a href="#" class="btn btn-sm btn-success float-right">Add to Card <i class="fas fa-angle-double-right"></i></a>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-3">
+         <div class="card bg-light">
+            <img class="card-img-top" src="//placeimg.com/280/180/tech" alt="Card image cap"/>
+            <div class="card-body">
+               <h5 class="card-title border-bottom pb-3">Card title <a href="#" class="float-right btn btn-sm btn-success d-inline-flex share"><i class="fas fa-share-alt"></i></a></h5>
+               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+               <a href="#" class="btn btn-sm btn-success float-right">Add to Card <i class="fas fa-angle-double-right"></i></a>
+            </div>
+         </div>
+      </div>
+   </div>
+  </div>
   );
 }
