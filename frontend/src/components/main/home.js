@@ -1,5 +1,5 @@
 import React from 'react';
-import image from '../images/home.jpg';
+import image from '../images/home2.png';
 import "../stylesheets/home.css"
 
 export default function home() {
@@ -102,6 +102,16 @@ export default function home() {
             </div>
          </div>
       </div>
+      <div class="col-md-3">
+         <div class="card bg-light">
+            <img class="card-img-top" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F23%2F2022%2F04%2F11%2Fbest-books-2022-2000.jpg" alt="Card image cap"/>
+            <div class="card-body">
+               <h5 class="card-title border-bottom pb-3">Card title <a href="#" class="float-right btn btn-sm btn-success d-inline-flex share"><i class="fas fa-share-alt"></i></a></h5>
+               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+               <a href="#" class="btn btn-sm btn-success float-right">Add to Card <i class="fas fa-angle-double-right"></i></a>
+            </div>
+         </div>
+      </div>
    </div>
   </div>
 
@@ -110,7 +120,7 @@ export default function home() {
   <div class="row g-2">
       <div class="col-md-4">
           <div class="card p-3 text-center px-4">
-              <div class="user-image"> <img src="https://i.imgur.com/PKHvlRS.jpg" class="rounded-circle" width="80"/> </div>
+              <div class="user-image"> <img src="https://cdn5.vectorstock.com/i/1000x1000/50/29/avatar-icon-of-girl-in-a-wide-brim-felt-hat-vector-16225029.jpg" class="rounded-circle" width="80"/> </div>
               <div class="user-content">
                   <h5 class="mb-0">Bruce Hardy</h5> <span>Software Developer</span>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -120,7 +130,7 @@ export default function home() {
       </div>
       <div class="col-md-4">
           <div class="card p-3 text-center px-4">
-              <div class="user-image"> <img src="https://i.imgur.com/w2CKRB9.jpg" class="rounded-circle" width="80"/> </div>
+              <div class="user-image"> <img src="https://cdn2.iconfinder.com/data/icons/circle-avatars-1/128/050_girl_avatar_profile_woman_suit_student_officer-512.png" class="rounded-circle" width="80"/> </div>
               <div class="user-content">
                   <h5 class="mb-0">Mark Smith</h5> <span>Web Developer</span>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -130,7 +140,7 @@ export default function home() {
       </div>
       <div class="col-md-4">
           <div class="card p-3 text-center px-4">
-              <div class="user-image"> <img src="https://i.imgur.com/ACeArwY.jpg" class="rounded-circle" width="80"/> </div>
+              <div class="user-image"> <img src="https://image.shutterstock.com/image-vector/face-happy-girl-avatar-laughing-260nw-1459862774.jpg" class="rounded-circle" width="80"/> </div>
               <div class="user-content">
                   <h5 class="mb-0">Veera Duncan</h5> <span>Software Architect</span>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>

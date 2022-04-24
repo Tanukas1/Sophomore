@@ -3,7 +3,6 @@ import './App.css';
 import Admin from "./components/admin";
 import Header from "./components/admin/header";
 import AdminDashboard from "./components/admin/admindashboard";
-// import Footer from "./components/admin/footer"
 import Main from "./components/main";
 import Signup from './components/main/signup';
 import Login from './components/main/login';
