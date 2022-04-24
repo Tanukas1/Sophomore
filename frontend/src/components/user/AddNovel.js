@@ -18,6 +18,14 @@ export default function AddNovel() {
 
   const url = app_config.api_url;
 
+  const Novelform = {
+    BookName: '',
+    AuthorName: '',
+    TitleOfBook: '',
+    Publication: ''
+  }
+
+
   const [thumbnail, setThumbnail] = useState("");
   const [novel, setNovel] = useState("");
 
@@ -85,14 +93,22 @@ export default function AddNovel() {
             <form onSubmit={handleSubmit}>
 
 
-              <TextField id="filled-basic" label=" Book Name*" variant="filled" /><br /><br />
-              <TextField id="filled-basic" label="Auothor Name*" variant="filled" /><br /><br />
-              <TextField id="filled-basic" label="Title of Book*" variant="filled" /><br /><br />
-              <TextField id="filled-basic" label="Publication*" variant="filled" /><br /><br />
+              <TextField onChange={handleChange} 
+              value={values.BookName} id="BookName" label=" Book Name*" variant="filled" /><br /><br />
+
+              <TextField onChange={handleChange} 
+              value={values.AuthorName} id="Author Name" label="Auothor Name*" variant="filled" /><br /><br />
+
+              <TextField onChange={handleChange} 
+              value={values.TitleOfBook} id="Title oF Book" label="Title of Book*" variant="filled" /><br /><br />
+
+              <TextField onChange={handleChange} 
+              value={values.Publication} id="Publication"  label="Publication*" variant="filled" /><br /><br />
+
               <TextareaAutosize aria-label="minimum height" minRows={3} placeholder="Discription" style={{ width: 200 }} /><br /><br />
               <Stack direction="row" spacing={5}>
                 <Button variant="contained" component="label"> Upload File <input type="file" hidden /></Button>
-                <Button variant="contained" color="success">Submit</Button>
+                <Button variant="contained" type="submit" color="success">Submit</Button>
               </Stack>
             </form>
           )}

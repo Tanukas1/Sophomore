@@ -1,3 +1,7 @@
+
+h1{
+    text-align: center;
+}
 section {
     padding-top: 4rem;
     padding-bottom: 5rem;
@@ -60,4 +64,26 @@ h2 {
 .share:hover {
             text-decoration: none;
         opacity: 0.8;
+    }
+    h2{
+        text-align: center;
+    }
+
+
+    h1{
+        text-align: center;
+    }
+
+    
+    .card {
+        border: none
+    }
+    
+    .user-content p {
+        margin-top: 5px;
+        font-size: 12px
+    }
+    
+    .ratings i {
+        color: blue
     }
