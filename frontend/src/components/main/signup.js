@@ -15,9 +15,15 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Swal from 'sweetalert2';
 import app_config from '../../config';
 import { Formik } from 'formik';
+import * as Yup from 'yup';
+
 const theme = createTheme();
 const Signup = () => {
-
+  const styles = {
+    bg: {
+      backgroundImage: 'url(${Image})'
+    }
+  };
   const url = app_config.api_url;
 
   const signupform = {
@@ -58,107 +64,124 @@ const Signup = () => {
 
       })
   }
+
+  const SignupSchema = Yup.object().shape({
+    firstname: Yup.string()
+      .min(2, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required('Required'),
+    lastname: Yup.string()
+      .min(2, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required('Required'),
+    email: Yup.string().email('Invalid email').required('Required'),
+  });
+
+
   return (
-    <ThemeProvider theme={theme}>
-      <Formik initialValues={signupform}
-        onSubmit={formSubmit}>
-        {({
-          values,
-          handleChange,
-          handleSubmit
-        }) => (
-          <Container component="main" maxWidth="xs">
-            <CssBaseline />
-            <Box
-              sx={{
-                marginTop: 8,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-            >
-              <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                <LockOutlinedIcon />
-              </Avatar>
-              <Typography component="h1" variant="h5">
-                Sign up
-              </Typography>
-              <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-                <Grid container spacing={2}>
-                  <Grid item xs={12} sm={6}>
-                    <TextField onChange={handleChange} value={values.firstname} name="firstname"
-                      autoComplete="given-name"
-                      // name="firstName"
-                      required
-                      fullWidth
-                      id="firstName"
-                      label="First Name"
-                      autoFocus
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField onChange={handleChange} value={values.lastname} name="lastname"
-                      required
-                      fullWidth
-                      id="lastName"
-                      label="Last Name"
-                      // name="lastName"
-                      autoComplete="family-name"
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField onChange={handleChange} value={values.email} name="email"
-                      required
-                      fullWidth
-                      id="email"
-                      label="Email Address"
-                      // name="email"
-                      autoComplete="email"
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField onChange={handleChange} value={values.password} name="password"
-                      required
-                      fullWidth
-                      // name="password"
-                      label="Password"
-                      type="password"
-                      id="password"
-                      autoComplete="new-password"
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <FormControlLabel
-                      control={<Checkbox value="allowExtraEmails" color="primary" />}
-                      label="Remember Password"
-                    />
+    <div  className='signup'>
+    <Container style={styles.bg} component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign up
+        </Typography>
 
-                  </Grid>
+        <Formik initialValues={signupform}
+          onSubmit={formSubmit} validationSchema ={SignupSchema}>
+          {({
+            values,
+            handleChange,
+            handleSubmit,
+            errors
+          }) => (
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <TextField onChange={handleChange} value={values.firstname} name="firstname"
+                    autoComplete="given-name"
+                    // name="firstName"
+                    required
+                    fullWidth
+                    id="firstName"
+                    label="First Name"
+                    error={Boolean(errors.firstname)}
+                    helperText={errors.firstname}
+                    autoFocus
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField onChange={handleChange} value={values.lastname} name="lastname"
+                    required
+                    fullWidth
+                    id="lastName"
+                    label="Last Name"
+                    // name="lastName"
+                    autoComplete="family-name"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField onChange={handleChange} value={values.email} name="email"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    // name="email"
+                    autoComplete="email"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField onChange={handleChange} value={values.password} name="password"
+                    required
+                    fullWidth
+                    // name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="new-password"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <FormControlLabel
+                    control={<Checkbox value="allowExtraEmails" color="primary" />}
+                    label="Remember Password"
+                  />
 
                 </Grid>
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
-                >
-                  Sign Up
-                </Button>
-                <Grid container justifyContent="center">
-                  <Grid item>
-                    Already have an account?
-                    <Link href="./login" variant="body2">
-                      Sign in
-                    </Link>
-                  </Grid>
-                </Grid>
-              </Box>
-            </Box>
 
-          </Container>
-        )}
-      </Formik>
-    </ThemeProvider>
-  );
+              </Grid>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign Up
+              </Button>
+              <Grid container justifyContent="center">
+                <Grid item>
+                  Already have an account?
+                  <Link href="./login" variant="body2">
+                    Sign in
+                  </Link>
+                </Grid>
+              </Grid>
+            </Box>)}
+        </Formik>
+      </Box>
+
+    </Container>
+    </div>
+  )
 }
 export default Signup;

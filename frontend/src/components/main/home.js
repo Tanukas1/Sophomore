@@ -1,5 +1,4 @@
 import React from 'react';
-import image from '../images/home2.png';
 import "../stylesheets/home.css"
 
 export default function home() {
@@ -7,7 +6,7 @@ export default function home() {
       <div>
   <div>
         <div class="card bg-dark text-white" style={{maxwidth: '30rem'}}/>
-        <div class="card-img-top"><img src={image} className="img-fluid" /></div>
+        {/* <div class="card-img-top"><img src={image} className="img-fluid" /></div> */}
         <div class="card-img-overlay d-flex align-items-end"></div>
           
         <section>

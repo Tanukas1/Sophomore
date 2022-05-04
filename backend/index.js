@@ -9,7 +9,7 @@ const cors = require("cors");
 // to parse json data from client
 app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000" }));
-app.use(express.static("./uploads"));
+app.use(express.static("./static"));
 
 app.use("/user", userManager);
 app.use("/novel", novelManager);

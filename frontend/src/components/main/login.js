@@ -15,6 +15,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -33,50 +34,38 @@ const theme = createTheme();
 
 export default function SignIn() {
   const url = app_config.api_url;
+
+  const navigate = useNavigate();
+
   const loginform = {
     email: '',
     password: ''
   }
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+
   const formSubmit = (values) => {
 
-    fetch(url + 'user/getbyemail/' + values.email)
-      .then(res => res.json())
-      .then(data => {
-        if (data) {
-          console.log(data);
-
-          if (data.password == values.password) {
-            console.log('login success');
-
-            Swal.fire({
-              icon: 'success',
-              title: 'Login Success',
-            })
-
+    fetch(url + '/user/authenticate', {
+      method : 'POST',
+      body : JSON.stringify(values),
+      headers : {
+        'Content-Type' : 'application/json'
+      } 
+    })
+      .then(res => {
+        if(res.status === 200){
+          Swal.fire({
+            icon : 'success'
+          })
+          res.json().then(data => {
             sessionStorage.setItem('user', JSON.stringify(data));
-            window.location.replace('/about');
-
-            return
-          }
+            navigate('/user')
+          })
+        }else if(res.status === 400){
+          Swal.fire({
+            icon : 'error'
+          })
         }
-
-        Swal.fire({
-          icon: 'error',
-          title: 'Email or Password Incorrect'
-        })
-
       })
-
-
   }
 
 
@@ -108,7 +97,6 @@ export default function SignIn() {
         }) => (
           <form onSubmit={handleSubmit}>
 
-            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
@@ -160,7 +148,6 @@ export default function SignIn() {
                 </Grid>
               </Grid>
 
-            </Box>
             {/* </Box> */}
           </form>
 

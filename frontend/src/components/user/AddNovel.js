@@ -17,12 +17,17 @@ import novelform from "react";
 export default function AddNovel() {
 
   const url = app_config.api_url;
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('user')));
 
   const Novelform = {
-    BookName: '',
-    AuthorName: '',
-    TitleOfBook: '',
-    Publication: ''
+    title: String,
+  description: String,
+  thumbnail: String,
+  price: String,
+  author: "",
+  rentable: false,
+  rentprice: 0,
+  uploadedBy : currentUser._id
   }
 
 

@@ -4,11 +4,13 @@ const Schema = mongoose.Schema;
 const schema = new Schema({
   title: String,
   description: String,
-  heroimage: String,
+  thumbnail: String,
   price: String,
   author: String,
-  data: String,
-  created: { type: Date, default: new Date() },
+  rentable: { type: Boolean, default: false },
+  rentprice: Number,
+  uploadedBy : { type: mongoose.Types.ObjectId, ref: 'users' },
+  createdAt: { type: Date, default: new Date() },
 });
 
 const model = mongoose.model("Novels", schema);
