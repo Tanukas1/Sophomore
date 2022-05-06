@@ -19,11 +19,7 @@ import * as Yup from 'yup';
 
 const theme = createTheme();
 const Signup = () => {
-  const styles = {
-    bg: {
-      backgroundImage: 'url(${Image})'
-    }
-  };
+  
   const url = app_config.api_url;
 
   const signupform = {
@@ -52,7 +48,7 @@ const Signup = () => {
           Swal.fire({
             icon: 'success',
             title: 'Registered!',
-            text: 'Now Login to Continue'
+            text: 'Welcome! Now Login to Continue'
           })
         } else {
           Swal.fire({
@@ -80,7 +76,7 @@ const Signup = () => {
 
   return (
     <div  className='signup'>
-    <Container style={styles.bg} component="main" maxWidth="xs">
+    <Container  component="main" maxWidth="xs">
       <CssBaseline />
       <Box
         sx={{
@@ -110,7 +106,6 @@ const Signup = () => {
                 <Grid item xs={12} sm={6}>
                   <TextField onChange={handleChange} value={values.firstname} name="firstname"
                     autoComplete="given-name"
-                    // name="firstName"
                     required
                     fullWidth
                     id="firstName"
@@ -126,7 +121,9 @@ const Signup = () => {
                     fullWidth
                     id="lastName"
                     label="Last Name"
-                    // name="lastName"
+                    error={Boolean(errors.lastname)}
+                    helperText={errors.lastname}
+                    autoFocus
                     autoComplete="family-name"
                   />
                 </Grid>
@@ -136,7 +133,9 @@ const Signup = () => {
                     fullWidth
                     id="email"
                     label="Email Address"
-                    // name="email"
+                    error={Boolean(errors.email)}
+                    helperText={errors.email}
+                    autoFocus
                     autoComplete="email"
                   />
                 </Grid>
@@ -148,6 +147,9 @@ const Signup = () => {
                     label="Password"
                     type="password"
                     id="password"
+                    error={Boolean(errors.password)}
+                    helperText={errors.password}
+                    autoFocus
                     autoComplete="new-password"
                   />
                 </Grid>

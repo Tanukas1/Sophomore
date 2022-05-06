@@ -54,7 +54,9 @@ export default function SignIn() {
       .then(res => {
         if(res.status === 200){
           Swal.fire({
-            icon : 'success'
+            icon : 'success',
+            title: 'LoggedIn!',
+            text: 'Welcome Back'
           })
           res.json().then(data => {
             sessionStorage.setItem('user', JSON.stringify(data));
@@ -62,7 +64,9 @@ export default function SignIn() {
           })
         }else if(res.status === 400){
           Swal.fire({
-            icon : 'error'
+            icon : 'error',
+            title: 'Oops!',
+            text: 'Something went wrong'
           })
         }
       })

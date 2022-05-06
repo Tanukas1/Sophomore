@@ -26,15 +26,13 @@ function App() {
       <BrowserRouter>
         <Routes>
 
-          
-          <Route element={<Notfound />} path="notfound"/>
-          <Route element={<Admin />} path="admin"/>
-          <Route element={<Header />} path="header">
-            {/* <Route element={<Footer />} path="footer" /> */}
+
+          <Route element={<Notfound />} path="notfound" />
+          <Route element={<Admin />} path="admin" >
             <Route element={<AdminDashboard />} path="admindashboard" />
             <Route element={<ManageUser />} path="manageuser" />
           </Route>
-          
+
           <Route element={<Main />} path="main">
             <Route element={<Signup />} path="signup" />
             <Route element={<Login />} path="login" />
@@ -43,18 +41,18 @@ function App() {
             <Route element={<AddQuery />} path="addQuery" />
             <Route element={<ListQuery />} path="listQuery" />
             <Route element={<ViewNovel />} path="viewNovel" />
-           
+
           </Route>
-           
+
 
           <Route element={<User />} path="user">
             <Route element={<UserDashboard />} path="dashboard" />
             <Route element={<AddNovel />} path="addNovel" />
-            <Route element={<Exchangenovel/>} path="exchangenovel"/>
+            <Route element={<Exchangenovel />} path="exchangenovel" />
           </Route>
 
-            <Route element={<Navigate to="/main/home" />} path="/" />
-            <Route element={<Navigate to="/notfound" />} path="*" />
+          <Route element={<Navigate to="/main/home" />} path="/" />
+          <Route element={<Navigate to="/notfound" />} path="*" />
 
 
         </Routes>

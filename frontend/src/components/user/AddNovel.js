@@ -99,16 +99,24 @@ export default function AddNovel() {
 
 
               <TextField onChange={handleChange} 
-              value={values.BookName} id="BookName" label=" Book Name*" variant="filled" /><br /><br />
+              value={values.BookName} id="Title" label=" title*" variant="filled" /><br /><br />
+
+<TextField onChange={handleChange} 
+              value={values.Publication} id="author"  label="Author*" variant="filled" /><br /><br />
 
               <TextField onChange={handleChange} 
-              value={values.AuthorName} id="Author Name" label="Auothor Name*" variant="filled" /><br /><br />
+              value={values.AuthorName} id="description" label="description*" variant="filled" /><br /><br />
 
               <TextField onChange={handleChange} 
-              value={values.TitleOfBook} id="Title oF Book" label="Title of Book*" variant="filled" /><br /><br />
+              value={values.TitleOfBook} id="Thumbnail" label="Thumbnail*" variant="filled" /><br /><br />
 
               <TextField onChange={handleChange} 
-              value={values.Publication} id="Publication"  label="Publication*" variant="filled" /><br /><br />
+              value={values.Publication} id="rentable"  label="rentable*" variant="filled" /><br /><br />
+               
+              
+
+               <TextField onChange={handleChange} 
+              value={values.Publication} id="rentprice"  label="Rentprice*" variant="filled" /><br /><br />
 
               <TextareaAutosize aria-label="minimum height" minRows={3} placeholder="Discription" style={{ width: 200 }} /><br /><br />
               <Stack direction="row" spacing={5}>
