@@ -20,7 +20,7 @@ router.post("/add", (req, res) => {
 router.get("/getall", (req, res) => {
   Model.find({})
     .then((data) => {
-      console.log("all blogs data fetched");
+      console.log("all novel data fetched");
       res.status(200).json(data);
     })
     .catch((err) => {
@@ -32,7 +32,7 @@ router.get("/getall", (req, res) => {
 router.get("/getbyid/:id", (req, res) => {
   Model.findById(req.params.id)
     .then((data) => {
-      console.log("blog fetched by id");
+      console.log("novel fetched by id");
       res.status(200).json(data);
     })
     .catch((err) => {

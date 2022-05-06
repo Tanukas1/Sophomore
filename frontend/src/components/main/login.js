@@ -74,6 +74,7 @@ export default function SignIn() {
 
 
   return (
+    <div className='login'>
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -159,5 +160,6 @@ export default function SignIn() {
         </Formik>
       </Container>
     </ThemeProvider>
+    </div>
   );
 }

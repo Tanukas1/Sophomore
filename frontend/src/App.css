@@ -38,5 +38,11 @@
 }
 
 .signup{
-  /* background: url(http://localhost:5000/images/download.jpg); */
+  background: url(http://localhost:5000/images/signup.jpg);
+}
+.login{
+  background: url(http://localhost:5000/images/login.jpg);
+}
+.homeimg{
+  background: url(http://localhost:5000/images/home2.png);
 }
