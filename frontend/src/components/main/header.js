@@ -3,9 +3,49 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { NovelContext } from "../../novelContext";
 
-const Header = () => {
- 
-     
+const Header = (props) => {
+  // const currentUser = sessionStorage.getItem("user");
+  // const [novelList, setnovelList, loading, setLoading] = useContext(NovelContext);
+
+  // const logout = () => {
+  //   sessionStorage.removeItem("user/novel");
+  //   window.location.replace("/login");
+  // };
+  // const showLoggedIn = () => {
+  //   if (currentUser) {
+  //     return (
+  //       <>
+  //         <li className="nav-item">
+  //           <Link className="nav-link" to="/manage">
+  //             Manage Novel
+  //           </Link>
+  //         </li>
+  //         <li className="nav-item">
+  //           <button onClick={logout} className="btn btn-success">
+  //             Logout
+  //           </button>
+  //         </li>
+  //       </>
+  //     );
+  //   } else {
+  //     return (
+  //       <>
+  //         <li className="nav-item">
+  //           <Link className="nav-link" to="main/login">
+  //             Login
+  //           </Link>
+  //         </li>
+  //         <li className="nav-item">
+  //           <Link className="nav-link" to="main/signup">
+  //             Signup
+  //           </Link>
+  //         </li>
+  //       </>
+  //     );
+  //   }
+  // };
+
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
     <div className="container-fluid">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
@@ -31,8 +71,8 @@ const Header = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/listblog">
-              Blogs
+            <Link className="nav-link" to="admin/managenovel">
+              ManageNovel
             </Link>
           </li>
           <li className="nav-item">
@@ -53,17 +93,6 @@ const Header = () => {
 
           {/* {showLoggedIn()} */}
         </ul>
-        <form className="d-flex">
-          <input
-            className="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button className="btn btn-outline-primary" type="submit">
-            Search
-          </button>
-        </form>
       </div>
     </div>
   </nav>
