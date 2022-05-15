@@ -71,7 +71,7 @@ const Header = (props) => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="admin/managenovel">
+            <Link className="nav-link" to="/admin/manageUser">
               ManageNovel
             </Link>
           </li>
@@ -81,17 +81,28 @@ const Header = (props) => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="Main/signup">
+            <Link className="nav-link" to="/main/signup">
               Signup
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="Main/login">
+            <Link className="nav-link" to="/Main/login">
               Login
             </Link>
           </li>
 
           {/* {showLoggedIn()} */}
+          <form className="d-flex">
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button className="btn btn-outline-primary" type="submit">
+              Search
+            </button>
+          </form>
         </ul>
       </div>
     </div>

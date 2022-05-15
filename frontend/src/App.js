@@ -14,6 +14,7 @@ import Exchangenovel from './components/user/exchangenovel';
 import Checkoutpage from './components/user/checkoutpage';
 import Profile from './components/user/profile';
 import BrowserNovel from "./components/main/browseNovel";
+import NovelDetail from "./components/main/novelDetail";
 import AddQuery from "./components/main/addQuery";
 import ListQuery from "./components/main/listQuery";
 import ViewNovel from "./components/main/viewNovel";
@@ -27,8 +28,6 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-
-
           <Route element={<Notfound />} path="notfound" />
           <Route element={<Admin />} path="admin" >
             <Route element={<AdminDashboard />} path="admindashboard" />
@@ -38,14 +37,13 @@ function App() {
           <Route element={<Main />} path="main">
             <Route element={<Signup />} path="signup" />
             <Route element={<Login />} path="login" />
-            <Route element={<BrowserNovel />} path="browserNovel" />
+            <Route element={<BrowserNovel />} path="browserNovel"/>
+            <Route element={<NovelDetail/>} path="novelDetail"/>
             <Route element={<Home />} path="home" />
             <Route element={<AddQuery />} path="addQuery" />
             <Route element={<ListQuery />} path="listQuery" />
             <Route element={<ViewNovel />} path="viewNovel" />
-
           </Route>
-
 
           <Route element={<User />} path="user">
             <Route element={<UserDashboard />} path="dashboard" />
@@ -67,27 +65,3 @@ function App() {
 }
 
 export default App;
-
-
-
-// import { BrowserRouter,Routes ,Route} from 'react-router-dom';
-// import React from 'react'
-// import Header from "./sonal/user/header"
-// import UserDashboard from "./sonal/user/dashboard"
-// import Login from "./sonal/user/login"
-// import Signup from "./sonal/user/signup"
-// export default function App() {
-//   return (
-//     <div>
-//     <BrowserRouter>
-//     <Routes>
-//     <Route element={<Header/>} path="header"/>
-//     <Route element={<Login/>} path="login"/>
-//     <Route element={<Signup/>} path="signup"/>
-//     <Route element={<UserDashboard/>} path="dashboard"/>
-//       </Routes>
-//       </BrowserRouter>
-//    </div>
-
-//   )
-// }
