@@ -12,6 +12,7 @@ import UserDashboard from "./components/user/userdashboard";
 import AddNovel from './components/user/addNovel';
 import Exchangenovel from './components/user/exchangenovel';
 import Checkoutpage from './components/user/checkoutpage';
+import Profile from './components/user/profile';
 import BrowserNovel from "./components/main/browseNovel";
 import AddQuery from "./components/main/addQuery";
 import ListQuery from "./components/main/listQuery";
@@ -51,6 +52,7 @@ function App() {
             <Route element={<AddNovel />} path="addNovel" />
             <Route element={<Exchangenovel />} path="exchangenovel" />
             <Route element={<Checkoutpage/>} path="checkoutpage"/>
+            <Route element={<Profile/>} path="profile"/>
           </Route>
 
           <Route element={<Navigate to="/main/home" />} path="/" />

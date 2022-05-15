@@ -27,6 +27,11 @@ const User = () => {
       icon : <Book />,
       link : '/user/checkoutpage'
     },
+    {
+      name : 'Profile',
+      icon : <Book />,
+      link : '/user/profile'
+    },
   ]
   return (
     <>
