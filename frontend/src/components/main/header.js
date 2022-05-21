@@ -4,51 +4,51 @@ import { useContext } from "react";
 import { NovelContext } from "../../novelContext";
 
 const Header = (props) => {
-  // const currentUser = sessionStorage.getItem("user");
+  const currentUser = sessionStorage.getItem("user");
   // const [novelList, setnovelList, loading, setLoading] = useContext(NovelContext);
 
-  // const logout = () => {
-  //   sessionStorage.removeItem("user/novel");
-  //   window.location.replace("/login");
-  // };
-  // const showLoggedIn = () => {
-  //   if (currentUser) {
-  //     return (
-  //       <>
-  //         <li className="nav-item">
-  //           <Link className="nav-link" to="/manage">
-  //             Manage Novel
-  //           </Link>
-  //         </li>
-  //         <li className="nav-item">
-  //           <button onClick={logout} className="btn btn-success">
-  //             Logout
-  //           </button>
-  //         </li>
-  //       </>
-  //     );
-  //   } else {
-  //     return (
-  //       <>
-  //         <li className="nav-item">
-  //           <Link className="nav-link" to="main/login">
-  //             Login
-  //           </Link>
-  //         </li>
-  //         <li className="nav-item">
-  //           <Link className="nav-link" to="main/signup">
-  //             Signup
-  //           </Link>
-  //         </li>
-  //       </>
-  //     );
-  //   }
-  // };
+  const logout = () => {
+    sessionStorage.removeItem("user/novel");
+    window.location.replace("/login");
+  };
+  const showLoggedIn = () => {
+    if (currentUser) {
+      return (
+        <>
+          <li className="nav-item">
+            <Link className="nav-link" to="/admin/manage">
+              Manage Novel
+            </Link>
+          </li>
+          <li className="nav-item">
+            <button onClick={logout} className="btn btn-danger">
+              Logout
+            </button>
+          </li>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <li className="nav-item">
+            <Link className="nav-link" to="/main/login">
+              Login
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/main/signup">
+              Signup
+            </Link>
+          </li>
+        </>
+      );
+    }
+  };
 
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <div className="container-fluid">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    <nav className="navbar navbar-expand-lg navbar-dark bg-success">
+    <div className="container-fluid">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
       <a className="navbar-brand" href="#">
         BookWorms
       </a>
@@ -71,16 +71,6 @@ const Header = (props) => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/admin/manageUser">
-              ManageNovel
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/user/addnovel">
-              Add Novel
-            </Link>
-          </li>
-          <li className="nav-item">
             <Link className="nav-link" to="/main/signup">
               Signup
             </Link>
@@ -91,8 +81,8 @@ const Header = (props) => {
             </Link>
           </li>
 
-          {/* {showLoggedIn()} */}
-          <form className="d-flex">
+          {showLoggedIn()}
+          {/* <form className="d-flex">
             <input
               className="form-control me-2"
               type="search"
@@ -102,7 +92,7 @@ const Header = (props) => {
             <button className="btn btn-outline-primary" type="submit">
               Search
             </button>
-          </form>
+          </form> */}
         </ul>
       </div>
     </div>
