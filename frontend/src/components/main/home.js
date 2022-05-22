@@ -1,12 +1,13 @@
 import React from 'react';
 import "../stylesheets/home.css"
+// import image from 'http://localhost:5000/images/home2.png';
 
 export default function home() {
   return (
       <div>
   <div>
         <div class="card bg-dark text-white" style={{maxwidth: '30rem'}}/>
-        {/* <div class="card-img-top"><img src={image} className="img-fluid" /></div> */}
+        <div class="card-img-top"><img src="http://localhost:5000/images/home2.png" /></div>
         <div class="card-img-overlay d-flex align-items-end"></div>
           
         <section>

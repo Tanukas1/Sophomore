@@ -30,7 +30,7 @@ const Header = (props) => {
     } else {
       return (
         <>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link className="nav-link" to="/main/login">
               Login
             </Link>
@@ -39,7 +39,7 @@ const Header = (props) => {
             <Link className="nav-link" to="/main/signup">
               Signup
             </Link>
-          </li>
+          </li> */}
         </>
       );
     }
@@ -68,6 +68,21 @@ const Header = (props) => {
           <li className="nav-item">
             <Link className="nav-link" to="/main/home">
               Home
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/main/viewNovel">
+              ViewNovel
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/main/browseNovel">
+              BrowseNovel
+            </Link>
+          </li>
+           <li className="nav-item">
+            <Link className="nav-link" to="/Main/novelDetail">
+            NovelDetail
             </Link>
           </li>
           <li className="nav-item">

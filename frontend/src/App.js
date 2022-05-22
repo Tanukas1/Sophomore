@@ -7,6 +7,7 @@ import Main from "./components/main";
 import Signup from './components/main/signup';
 import Login from './components/main/login';
 import Home from "./components/main/home";
+import Footer from './components/main/footer';
 import User from "./components/user";
 import UserDashboard from "./components/user/userdashboard";
 import AddNovel from './components/user/addNovel';
@@ -35,11 +36,11 @@ function App() {
           </Route>
 
           <Route element={<Main />} path="main">
+          <Route element={<Home />} path="home" />
             <Route element={<Signup />} path="signup" />
             <Route element={<Login />} path="login" />
             <Route element={<BrowserNovel />} path="browserNovel"/>
             <Route element={<NovelDetail/>} path="novelDetail"/>
-            <Route element={<Home />} path="home" />
             <Route element={<AddQuery />} path="addQuery" />
             <Route element={<ListQuery />} path="listQuery" />
             <Route element={<ViewNovel />} path="viewNovel" />
@@ -56,8 +57,8 @@ function App() {
           <Route element={<Navigate to="/main/home" />} path="/" />
           <Route element={<Navigate to="/notfound" />} path="*" />
 
-
         </Routes>
+        <Footer/>
       </BrowserRouter>
 
     </div>

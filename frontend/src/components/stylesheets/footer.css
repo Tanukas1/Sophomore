@@ -11,15 +11,15 @@ body{
   background: #EEECEB;
 }
 footer{
-  position: fixed;
-  background: #14c96e;
+  /* position: fixed; */
+  background: #16a95f;
   width: 100%;
   bottom: 0;
   left: 0;
 }
 footer::before{
   content: '';
-  position: absolute;
+  /* position: absolute; */
   left: 0;
   top: 100px;
   height: 1px;
