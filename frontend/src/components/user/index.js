@@ -5,40 +5,33 @@ import Footer from "./footer";
 import Header from "./header";
 
 const User = () => {
-
   const options = [
     {
-      name : 'Add Novels',
-      icon : <Book />,
-      link : '/user/addnovel'
+      name: "Add Novels",
+      icon: <Book />,
+      link: "/user/addnovel",
     },
     {
-      name : 'Add Query',
-      icon : <Book />,
-      link : '/user/addQuery'
+      name: "Add Query",
+      icon: <Book />,
+      link: "/user/addQuery",
     },
     {
-      name : 'Exchange Novel',
-      icon : <Book />,
-      link : '/user/exchangenovel'
+      name: "Manage Novels",
+      icon: <Book />,
+      link: "/user/exchangenovel",
     },
     {
-      name : 'Checkout Page',
-      icon : <Book />,
-      link : '/user/checkoutpage'
+      name: "Manage Queries",
+      icon: <Book />,
+      link: "/user/exchangenovel",
     },
-    {
-      name : 'Profile',
-      icon : <Book />,
-      link : '/user/profile'
-    },
-  ]
+  ];
   return (
     <>
-    <Sidebar sidebarOptions={options} title={'User Dashboard'} >
-      <Outlet />
-    </Sidebar>
-      
+      <Sidebar sidebarOptions={options} title={"User Dashboard"}>
+        <Outlet />
+      </Sidebar>
     </>
   );
 };

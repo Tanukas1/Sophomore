@@ -1,27 +1,86 @@
 const express = require("express");
 const app = express();
-const userManager = require("./routers/userManager");
-const novelManager = require("./routers/novelManager");
-const util = require("./routers/utils");
-const port = process.env.PORT || 5000;
 const cors = require("cors");
 
-// to parse json data from client
-app.use(express.json());
-app.use(cors({ origin: "http://localhost:3000" }));
-app.use(express.static("./static"));
+const userRouter = require("./routers/userRouter");
+const novelRouter = require("./routers/novelRouter");
+const utilRouter = require("./routers/utils");
+const queryRouter = require("./routers/queryRouter");
+const checkoutRouter = require("./routers/checkoutRouter");
 
-app.use("/user", userManager);
-app.use("/novel", novelManager);
-app.use("/utils", util);
+const { createServer } = require("http");
+const { Server } = require("socket.io");
 
-app.get("/home", (req, res) => {
-  console.log("client request on server");
-  res.send("Request on home");
+const httpServer = createServer(app);
+
+const connectedUsers = {};
+
+const io = new Server(httpServer, {
+  cors: { origin: ["http://localhost:3000"] },
 });
 
+io.on("connection", (socket) => {
+  console.log("client connected");
 
+  io.on("add", (userid) => {
+    connectedUsers[userid] = socket.id;
+  });
 
-app.listen(port, () => {
-  console.log(`Server started on port localhost : ${port}`)
+  io.on("checkuser", (userid) => {
+    io.emit(
+      "isonline",
+      connectedUsers[userid]
+        ? { status: online, socketid: connectedUsers[userid] }
+        : { status: offline }
+    );
+  });
+  // on function is used for receieving the event
+  socket.on("sendmsg", (data) => {
+    console.log(data);
+    data.sent = false;
+    socket.broadcast.emit("recmsg", data);
+  });
+});
+
+// app.listen(5000,()=>{
+
+//          console.log("listening 5000...");
+// });
+
+const stripe_sk =
+  "sk_test_51L1Wf4SG8drK0Wt5r9B58VpCVuppBvRGQciPAEEoKGtMEtRWr9HpGdBK8ulyJuckoVaJcaUSPDeYibVSIi89rGgj006q8dj8ZW";
+const stripe = require("stripe")(stripe_sk);
+
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+  })
+);
+
+app.use(express.static("./uploads"));
+app.use(express.json());
+// app.use(cors({origin:['http://localhost:3000'],}));
+
+app.use("/user", userRouter);
+
+app.use("/novel", novelRouter);
+app.use("/util", utilRouter);
+app.use("/query", queryRouter);
+app.use("/checkout", checkoutRouter);
+
+app.post("/create-payment-intent", async (req, res) => {
+  const data = req.body;
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: data.amount,
+    currency: "inr",
+  });
+  res.status(200).json(paymentIntent);
+});
+
+app.get("/", (req, resp) => {
+  resp.send("home");
+});
+
+httpServer.listen(5000, () => {
+  console.log("server started");
 });

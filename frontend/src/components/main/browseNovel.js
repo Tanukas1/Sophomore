@@ -1,255 +1,160 @@
-import { styled } from '@mui/material/styles';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import { green } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { Container } from '@mui/material';
-import React, { useEffect, useState,} from "react";
+import { styled } from "@mui/material/styles";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+import Collapse from "@mui/material/Collapse";
+import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import { green } from "@mui/material/colors";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ShareIcon from "@mui/icons-material/Share";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { Button, Container } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import app_config from "../../config";
 import { Search } from "@mui/icons-material";
 import { InputAdornment } from "@mui/material";
+import TimeAgo from "javascript-time-ago";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
 })(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
+  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+  marginLeft: "auto",
+  transition: theme.transitions.create("transform", {
     duration: theme.transitions.duration.shortest,
   }),
 }));
 
+export default function BrowseNovel() {
+  const timeAgo = new TimeAgo("en-US");
 
-const BrowseSlides = () => {
-  const [datalist, setDatalist] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const url = app_config.backend_url;
-  const navigate = useNavigate();
-
-  const fetchData = () => {
-    fetch(url + "/slide/getall").then((res) => {
-      if (res.status === 200) {
-        res.json().then((data) => {
-          console.log(data);
-          setDatalist(data);
-          setLoading(false);
-        });
-      }
-    });
-  };
-
-  const [filter, setFilter] = useState("");
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const displayData = () => {
-    if (!loading) {
-      return datalist.map(
-        ({
-          title,
-          description,
-          category,
-          numSlides,
-          thumbnail,
-          file,
-          createdAt,
-          _id,
-        }) => (
-          <div key={_id} class="col-md-12 col-lg-4 mb-4 mb-lg-0">
-            <div class="card mt-5">
-              <NavLink className="ripple" to={"/main/pptviewer/" + _id}>
-                <img
-                  src={url + "/uploads/" + thumbnail}
-                  class="card-img-top"
-                  alt="Laptop"
-                />
-              </NavLink>
-              <div class="card-body">
-                <div class="d-flex justify-content-between">
-                  <p class="small">
-                    <a href="#!" class="text-muted">
-                      {category}
-                    </a>
-                  </p>
-                  {/* <p class="small text-danger">
-                    <s>$1099</s>
-                  </p> */}
-                </div>
-
-                <div class="d-flex justify-content-between mb-3">
-                  <h5 class="mb-0">{title}</h5>
-                  {/* <h5 class="text-dark mb-0">FREE</h5> */}
-                </div>
-
-                <div class="d-flex justify-content-between mb-2">
-                  <p class="text-muted mb-0">
-                    <span class="fw-bold">FREE</span>
-                  </p>
-                  <div class="ms-auto text-warning">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )
-      );
-    }
-  };
-
-  const applyfilter = () => {};
-
-  return (
-    <div style={{ background: "#eee", height: "100vh" }}>
-      <header style={styles.header}>
-        <Typography className="text-center text-white" variant="h5">
-          Neephur
-        </Typography>
-        <Typography className="text-center text-white" variant="h2">
-          Explore Powerpoint Slides
-        </Typography>
-
-        <div className="input-group mt-5">
-          <input
-            className="form-control"
-            value={filter}
-            label="Search Here"
-            onChange={(e) => setFilter(e.target.value)}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Search sx={{ color: "active.active", mr: 1, my: 0.5 }} />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <button
-            className="btn btn-primary"
-            onClick={applyfilter}
-            type="submit"
-          >
-            Search
-          </button>
-        </div>
-      </header>
-      <div className="container">
-        <div className="row">{displayData()}</div>
-      </div>
-    </div>
-  );
-};
-const styles = {
-  header: {
-    background:
-      "linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/browse_back.jpg)",
-    padding: "2rem",
-    textShadow: "2px 2px 3px #0000005c",
-    height: "300px",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  },
-};
-const url = app_config.api_url;
-
-export default function RecipeReviewCard() {
   const [expanded, setExpanded] = React.useState(false);
-
-
+  const url = app_config.api_url;
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-
   const [loading, setLoading] = useState(true);
   const [novelList, setNovelList] = useState([]);
-  
+  const navigate = useNavigate();
+
   useEffect(() => {
-    fetch(url + '/novel/getall')
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            setNovelList(data);
-            setLoading(false);
-        })
-}, [])
+    fetch(url + "/novel/getall")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setNovelList(data);
+        setLoading(false);
+      });
+  }, []);
 
+  const searchCard = () => {
+    return (
+      <div className="">
+        <div className="card">
+          <div className="card-header bg-white p-4">
+            <div class="input-group rounded">
+              <input
+                style={{ border: "none", outline: "none" }}
+                type="search"
+                class="form-control rounded"
+                placeholder="Search"
+                aria-label="Search"
+                aria-describedby="search-addon"
+              />
+              <span
+                class="input-group-text border-0 bg-white"
+                id="search-addon"
+              >
+                <i class="fas fa-search"></i>
+              </span>
+            </div>
+          </div>
+          <div className="card-body p-4">
+            <p className="text-muted">ADVANCED SEARCH</p>
+            <div className="row">
+              <div className="col-sm-3">
+                <button className="btn btn-outline-primary">City</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
-
+  const displayData = () => {
+    if (!loading) {
+      return novelList.map((novel) => (
+        <div className="col-md-4">
+          <Card>
+            <CardHeader
+              avatar={
+                <Avatar sx={{ bgcolor: green[500] }} aria-label="user">
+                  {novel.uploadedBy.firstname.slice(0, 1)}
+                </Avatar>
+              }
+              title={
+                novel.uploadedBy.firstname + " " + novel.uploadedBy.lastname
+              }
+              subheader={timeAgo.format(new Date(novel.createdAt))}
+            />
+            <CardMedia
+              component="img"
+              height="400"
+              image={url + "/uploads/" + novel.thumbnail}
+              alt={novel.title}
+            />
+            <CardContent>
+              <Typography variant="h5" color="text.secondary">
+                {novel.title}
+              </Typography>
+              <Typography variant="body1" color="text.secondary">
+                {novel.author}
+              </Typography>
+            </CardContent>
+            <CardActions disableSpacing>
+              <Button
+                className="mt-3"
+                onClick={(e) => navigate("/main/novelDetail/" + novel._id)}
+              >
+                View More
+              </Button>
+              <ExpandMore
+                expand={expanded}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="show more"
+              >
+                <ExpandMoreIcon />
+              </ExpandMore>
+            </CardActions>
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+              <CardContent>
+                <Typography paragraph>{novel.description}</Typography>
+              </CardContent>
+            </Collapse>
+          </Card>
+        </div>
+      ));
+    }
+  };
 
   return (
-    <Container>
-      <Card sx={{ maxWidth: 345 }}>
-        <CardHeader
-          avatar={
-            <Avatar sx={{ bgcolor: green[500] }} aria-label="recipe">
-              T
-            </Avatar>
-          }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title="Shrimp and Chorizo Paella"
-          subheader="September 14, 2016"
-        />
-        <CardMedia
-          component="img"
-          height="194"
-          image="data:image/jpeg;base64,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"
-          alt="Paella dish"
-        />
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            ryyffygubihhooohhohoh
-          </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton>
-          <ExpandMore
-            expand={expanded}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </ExpandMore>
-        </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography paragraph>Method:</Typography>
-            <Typography paragraph>
-              Heat 1/2 cup of the broth in a pot until simmering, add saffron and set
-              aside for 10 minutes.
-            </Typography>
-          </CardContent>
-        </Collapse>
-      </Card>
-    </Container>
+    <div style={{ minHeight: "100vh", background: "#eee" }}>
+      <Container className="py-5">
+        {searchCard()}
+        <div className="row mt-5">{displayData()}</div>
+      </Container>
+      ;
+    </div>
   );
 }

@@ -9,7 +9,8 @@ const schema = new Schema({
   author: String,
   rentable: { type: Boolean, default: false },
   rentprice: Number,
-  uploadedBy : { type: mongoose.Types.ObjectId, ref: 'users' },
+  exchangable: { type: Boolean, default: false },
+  uploadedBy: { type: mongoose.Types.ObjectId, ref: "users" },
   createdAt: { type: Date, default: new Date() },
 });
 
